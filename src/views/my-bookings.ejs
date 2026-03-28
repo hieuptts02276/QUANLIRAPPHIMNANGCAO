@@ -1,0 +1,14 @@
+<%- include('header', { title: 'Vé của tôi', user }) %>
+<section class="card glass">
+  <h1>Đơn đặt vé của tôi</h1>
+  <% if (created) { %><div class="ok">Đặt vé thành công, mã booking #<%= created %>.</div><% } %>
+  <table>
+    <thead><tr><th>BookingID</th><th>Phim</th><th>Suất chiếu</th><th>Tổng tiền</th><th>Trạng thái</th></tr></thead>
+    <tbody>
+      <% bookings.forEach(b => { %>
+        <tr><td><%= b.BookingID %></td><td><%= b.Title %></td><td><%= b.StartTime %></td><td><%= Number(b.TotalAmount).toLocaleString('vi-VN') %> đ</td><td><%= b.Status %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('footer') %>

@@ -1,0 +1,29 @@
+<%- include('header', { title: 'Quản lý đồ ăn', user }) %>
+<section class="card glass">
+  <h1>Food & Combo</h1>
+  <div class="two-col">
+    <div>
+      <h2>Thêm món ăn</h2>
+      <form method="post" action="/foods" class="grid-form">
+        <label>Tên món<input name="FoodName" required/></label>
+        <label>Giá<input type="number" name="Price" required/></label>
+        <label>Loại<input name="Type" placeholder="snack / drink"/></label>
+        <button type="submit">Thêm Food</button>
+      </form>
+    </div>
+    <div>
+      <h2>Thêm combo</h2>
+      <form method="post" action="/combos" class="grid-form">
+        <label>Tên combo<input name="ComboName" required/></label>
+        <label>Giá<input type="number" name="Price" required/></label>
+        <button type="submit">Thêm Combo</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div><h3>Foods</h3><ul><% foods.forEach(f => { %><li><%= f.FoodName %> - <%= Number(f.Price).toLocaleString('vi-VN') %> đ</li><% }) %></ul></div>
+    <div><h3>Combos</h3><ul><% combos.forEach(c => { %><li><%= c.ComboName %> - <%= Number(c.Price).toLocaleString('vi-VN') %> đ</li><% }) %></ul></div>
+  </div>
+</section>
+<%- include('footer') %>

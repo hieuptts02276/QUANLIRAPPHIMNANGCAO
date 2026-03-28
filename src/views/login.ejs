@@ -1,0 +1,12 @@
+<%- include('header', { title: 'Đăng nhập', user: null }) %>
+<section class="card glass narrow">
+  <h1>Đăng nhập hệ thống</h1>
+  <p class="muted">Tài khoản mẫu: admin@cinema.local / staff@cinema.local / customer@cinema.local (mật khẩu: 123456)</p>
+  <% if (error) { %><div class="alert"><%= error %></div><% } %>
+  <form method="post" class="grid-form">
+    <label>Email<input type="email" name="email" required/></label>
+    <label>Mật khẩu<input type="password" name="password" required/></label>
+    <button type="submit">Đăng nhập</button>
+  </form>
+</section>
+<%- include('footer') %>

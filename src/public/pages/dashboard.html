@@ -1,0 +1,6 @@
+<!doctype html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard</title><link rel="stylesheet" href="/public/style.css"></head><body>
+<script src="/public/common.js"></script>
+<script>
+(async()=>{await renderLayout('Dashboard',`<section class='card glass'><h1>Dashboard tổng quan</h1><div class='stats' id='stats'></div></section>`); const d=await fetch('/api/dashboard').then(r=>r.json()); document.getElementById('stats').innerHTML=`<article class='stat glass'><h3>Movies</h3><p>${d.movies}</p></article><article class='stat glass'><h3>Showtimes</h3><p>${d.showtimes}</p></article><article class='stat glass'><h3>Bookings</h3><p>${d.bookings}</p></article><article class='stat glass'><h3>Revenue</h3><p>${currency(d.revenue)} đ</p></article>`; bindFluentEffects();})();
+</script>
+</body></html>
