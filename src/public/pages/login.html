@@ -1,0 +1,11 @@
+<!doctype html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Đăng nhập</title><link rel="stylesheet" href="/public/style.css"></head>
+<body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+<div class="shell"><main class="page"><section class="card glass narrow"><h1>Đăng nhập hệ thống</h1><p class="muted">admin/staff/customer@cinema.local - mật khẩu 123456</p><div id="err" class="alert" style="display:none"></div><form id="f" class="grid-form"><label>Email<input name="email" type="email" required></label><label>Mật khẩu<input name="password" type="password" required></label><button>Đăng nhập</button></form></section></main></div>
+<script src="/public/common.js"></script>
+<script>
+fetch('/api/me').then(r=>r.json()).then(d=>{ if(d.user) location.href='/dashboard.html'; });
+document.getElementById('f').onsubmit = async (e)=>{e.preventDefault(); const fd=new FormData(e.target); const rs=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(fd))}); const data=await rs.json(); if(!rs.ok){const err=document.getElementById('err'); err.style.display='block'; err.textContent=data.error; return;} location.href='/dashboard.html';};
+bindFluentEffects();
+</script>
+</body></html>

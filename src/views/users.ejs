@@ -1,0 +1,20 @@
+<%- include('header', { title: 'Quản lý người dùng', user }) %>
+<section class="card glass">
+  <h1>Users (Admin)</h1>
+  <form method="post" class="grid-form cols-4">
+    <label>Họ tên<input name="Fullname" required/></label>
+    <label>Email<input name="Email" type="email" required/></label>
+    <label>Mật khẩu<input name="Password" type="password" required/></label>
+    <label>Vai trò<select name="Role"><option>admin</option><option>staff</option><option selected>customer</option></select></label>
+    <button type="submit">Tạo user</button>
+  </form>
+  <table>
+    <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Active</th></tr></thead>
+    <tbody>
+      <% users.forEach(u => { %>
+        <tr><td><%= u.UserID %></td><td><%= u.Fullname %></td><td><%= u.Email %></td><td><%= u.Role %></td><td><%= u.Active %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('footer') %>

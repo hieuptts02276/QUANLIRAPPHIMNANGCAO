@@ -1,0 +1,16 @@
+{
+  "name": "quanlirapphimnangcao",
+  "version": "1.1.0",
+  "description": "Cinema management app based on ERD (HTML pages)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.4.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  }
+}

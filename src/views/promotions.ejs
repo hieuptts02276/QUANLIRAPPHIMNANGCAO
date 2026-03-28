@@ -1,0 +1,21 @@
+<%- include('header', { title: 'Khuyến mãi', user }) %>
+<section class="card glass">
+  <h1>Promotions</h1>
+  <form method="post" class="grid-form cols-4">
+    <label>Tên CTKM<input name="Name" required/></label>
+    <label>Giảm %<input type="number" name="DiscountPercent" required/></label>
+    <label>Từ ngày<input type="date" name="StartDate" required/></label>
+    <label>Đến ngày<input type="date" name="EndDate" required/></label>
+    <label>Trạng thái<select name="Status"><option value="active">active</option><option value="inactive">inactive</option></select></label>
+    <button type="submit">Thêm khuyến mãi</button>
+  </form>
+  <table>
+    <thead><tr><th>Tên</th><th>Discount</th><th>Thời gian</th><th>Status</th></tr></thead>
+    <tbody>
+      <% promotions.forEach(p => { %>
+        <tr><td><%= p.Name %></td><td><%= p.DiscountPercent %>%</td><td><%= p.StartDate %> → <%= p.EndDate %></td><td><%= p.Status %></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('footer') %>

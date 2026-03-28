@@ -1,0 +1,11 @@
+<%- include('header', { title: 'Dashboard', user }) %>
+<section class="card glass">
+  <h1>Dashboard tổng quan</h1>
+  <div class="stats">
+    <article class="stat glass"><h3>Movies</h3><p><%= stats.movies %></p></article>
+    <article class="stat glass"><h3>Showtimes</h3><p><%= stats.showtimes %></p></article>
+    <article class="stat glass"><h3>Bookings</h3><p><%= stats.bookings %></p></article>
+    <article class="stat glass"><h3>Revenue</h3><p><%= Number(stats.revenue).toLocaleString('vi-VN') %> đ</p></article>
+  </div>
+</section>
+<%- include('footer') %>

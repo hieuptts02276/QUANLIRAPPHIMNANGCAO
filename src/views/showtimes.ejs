@@ -1,0 +1,30 @@
+<%- include('header', { title: 'Quản lý suất chiếu', user }) %>
+<section class="card glass">
+  <h1>Suất chiếu</h1>
+  <form method="post" class="grid-form cols-4">
+    <label>Phim
+      <select name="MovieID" required>
+        <% movies.forEach(m => { %><option value="<%= m.MovieID %>"><%= m.Title %></option><% }) %>
+      </select>
+    </label>
+    <label>Phòng
+      <select name="RoomID" required>
+        <% rooms.forEach(r => { %><option value="<%= r.RoomID %>"><%= r.RoomName %></option><% }) %>
+      </select>
+    </label>
+    <label>Bắt đầu<input type="datetime-local" name="StartTime" required/></label>
+    <label>Kết thúc<input type="datetime-local" name="EndTime" required/></label>
+    <label>Giá vé<input type="number" name="Price" required/></label>
+    <button type="submit">Thêm suất chiếu</button>
+  </form>
+
+  <table>
+    <thead><tr><th>ID</th><th>Movie</th><th>Room</th><th>Start</th><th>Price</th></tr></thead>
+    <tbody>
+    <% showtimes.forEach(s => { %>
+      <tr><td><%= s.ShowtimeID %></td><td><%= s.Title %></td><td><%= s.RoomName %></td><td><%= s.StartTime %></td><td><%= Number(s.Price).toLocaleString('vi-VN') %> đ</td></tr>
+    <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('footer') %>

@@ -1,0 +1,26 @@
+<%- include('header', { title: 'Quản lý phim', user }) %>
+<section class="card glass">
+  <h1>Phim</h1>
+  <form method="post" class="grid-form cols-4">
+    <label>Tên phim<input name="Title" required/></label>
+    <label>Thời lượng (phút)<input name="Duration" type="number" required/></label>
+    <label>Ngày chiếu<input name="ReleaseDate" type="date" required/></label>
+    <label>Ngôn ngữ<input name="Language"/></label>
+    <label>Độ tuổi<input name="AgeRating"/></label>
+    <label>Trạng thái
+      <select name="Status"><option value="active">active</option><option value="inactive">inactive</option></select>
+    </label>
+    <label class="span-4">Mô tả<textarea name="Description"></textarea></label>
+    <button type="submit">Thêm phim</button>
+  </form>
+
+  <table>
+    <thead><tr><th>ID</th><th>Title</th><th>Duration</th><th>Release</th><th>Status</th></tr></thead>
+    <tbody>
+    <% movies.forEach(m => { %>
+      <tr><td><%= m.MovieID %></td><td><%= m.Title %></td><td><%= m.Duration %></td><td><%= m.ReleaseDate %></td><td><%= m.Status %></td></tr>
+    <% }) %>
+    </tbody>
+  </table>
+</section>
+<%- include('footer') %>
